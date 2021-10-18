@@ -5,7 +5,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    private int score;
+    public int score;
     public int health;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI healthText;
@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     {
         score = 0;
         UpdateScore(0);
-        health = 10;
+        health = 4;
         UpdateHealth(0);
     }
 
