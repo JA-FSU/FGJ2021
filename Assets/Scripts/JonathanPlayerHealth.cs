@@ -5,11 +5,13 @@ using UnityEngine;
 public class JonathanPlayerHealth : MonoBehaviour
 {
     private GameManager gameManager;
+    Rigidbody2D playerRb;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        playerRb = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -18,21 +20,20 @@ public class JonathanPlayerHealth : MonoBehaviour
         
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter2D(Collision2D other)
     {
         // When touching object with "Enemy" tag, subtract 1 from health
         if (other.gameObject.CompareTag("Enemy"))
         {
-            if (gameManager.health > 0)
+            Vector2 awayFromPlayer = gameObject.transform.position - other.transform.position;
+
+            playerRb.velocity = Vector2.zero;
+            playerRb.AddForce(awayFromPlayer * 4, ForceMode2D.Impulse);
+            if (gameManager.health > 0) ;
             {
-                Debug.Log("Touched enemy!");
                 gameManager.UpdateHealth(1);
             }
-        }
-
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            return;
+        
         }
     }
 }
