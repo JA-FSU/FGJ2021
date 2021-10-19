@@ -62,6 +62,11 @@ public class NatePlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        grounded = false;
+    }
+
 
     public void RandomizeControls(string[] controls) // Changes all the buttons at random.
     {
