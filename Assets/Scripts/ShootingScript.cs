@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShootingScript : MonoBehaviour
 {
+    private GameManager gameManager;
+
     public GameObject bulletPrefab;
     public Transform bulletContainer;
     private GameObject spawner;
@@ -13,13 +15,14 @@ public class ShootingScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         spawner = GameObject.Find("BulletSpawner");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canShoot && bulletContainer.childCount < 5)
+        if (Input.GetKeyDown(KeyCode.Space) && canShoot && bulletContainer.childCount < 5 && gameManager.health > 0)
         {
             StartCoroutine("ShootWithCooldown");
         }
