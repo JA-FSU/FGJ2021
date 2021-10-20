@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7037307094498474681}
   - component: {fileID: 3731196415630853249}
+  - component: {fileID: 1436588355736080878}
+  - component: {fileID: 4839688324824069870}
   m_Layer: 0
   m_Name: JonathanBullet
   m_TagString: Projectile
@@ -82,3 +84,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1436588355736080878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7635714538661123760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b84f3b8ed752d6043b8523b60bee3c1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &4839688324824069870
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7635714538661123760}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.49999997

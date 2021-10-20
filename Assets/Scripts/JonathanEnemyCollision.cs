@@ -24,7 +24,9 @@ public class JonathanEnemyCollision : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Projectile"))
         {
-
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+            gameManager.UpdateScore(5);
         }
     }
 }
