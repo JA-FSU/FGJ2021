@@ -5,10 +5,10 @@ using UnityEngine;
 public class ShootingScript : MonoBehaviour
 {
     public GameObject bulletPrefab;
+    public Transform bulletContainer;
     private GameObject spawner;
-
-    float Cooldown;
-    private float Reload = 0.65f;
+    public bool canShoot = true;
+    private float Cooldown = 0.65f;
 
     // Start is called before the first frame update
     void Start()
@@ -19,11 +19,23 @@ public class ShootingScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Cooldown += Time.deltaTime;
-        if (Input.GetKeyDown(KeyCode.Space) && Cooldown >= Reload)
+        if (Input.GetKeyDown(KeyCode.Space) && canShoot && bulletContainer.childCount < 5)
         {
-            Instantiate(bulletPrefab, spawner.transform.position, spawner.transform.rotation);
-            Cooldown = 0;
+            StartCoroutine("ShootWithCooldown");
         }
     }
+
+    IEnumerator ShootWithCooldown()
+    {
+        // Stuff before the delay
+        Instantiate(bulletPrefab, spawner.transform.position, spawner.transform.rotation, bulletContainer);
+        canShoot = false;
+
+        // The delay
+        yield return new WaitForSeconds(Cooldown);
+
+        // Stuff after the delay
+        canShoot = true;
+    }
+
 }
