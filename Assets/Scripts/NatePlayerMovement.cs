@@ -25,9 +25,16 @@ public class NatePlayerMovement : MonoBehaviour
     public bool canShoot = true;
     private float Cooldown = 0.65f;
 
+    public AudioClip jumpSound;
+    public AudioClip shootSound;
+    public AudioClip randomizeSound;
+
+    private AudioSource soundFX;
+
     // Start is called before the first frame update
     void Start()
     {
+        soundFX = GetComponent<AudioSource>();
         //Jonathan's code here.
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
         spawner = GameObject.Find("BulletSpawner");
@@ -51,6 +58,7 @@ public class NatePlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(controls[2]) && grounded)
         {
             gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            soundFX.PlayOneShot(jumpSound, 1.0f);
             grounded = false;
         }
         // Aaand for crouching, we need to be grounded
@@ -97,6 +105,8 @@ public class NatePlayerMovement : MonoBehaviour
             controls[t] = controls[r];
             controls[r] = temp;
         }
+
+        soundFX.PlayOneShot(randomizeSound, 1.0f);
     }
 
     IEnumerator ShootWithCooldown()
@@ -112,6 +122,7 @@ public class NatePlayerMovement : MonoBehaviour
         // Stuff before the delay
         Instantiate(bulletPrefab, spawner.transform.position, rotationPos, bulletContainer);
         canShoot = false;
+        soundFX.PlayOneShot(shootSound, 1.0f);
 
         // The delay
         yield return new WaitForSeconds(Cooldown);
