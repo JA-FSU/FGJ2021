@@ -29,7 +29,7 @@ public class JonathanPlayerHealth : MonoBehaviour
 
             playerRb.velocity = Vector2.zero;
             playerRb.AddForce(awayFromPlayer * 4, ForceMode2D.Impulse);
-            if (gameManager.health > 0) ;
+            if (gameManager.health > 0)
             {
                 gameManager.UpdateHealth(1);
             }

@@ -5,7 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/NateMainMenu.unity
+    guid: f1ea9b35012b02044a269fe1a816c4f2
+  - enabled: 1
+    path: Assets/Scenes/DomenicScene.unity
+    guid: d09d20ed9204ba5478a331985057de55
+  - enabled: 1
+    path: Assets/Scenes/DomenicScene2.unity
+    guid: 169c453ac8b61084f888b543808bbcc1
+  - enabled: 1
+    path: Assets/Scenes/DomenicScene3.unity
+    guid: 8b2f3cbe7ef9ce04b9b99a13753d4cb9
   m_configObjects: {}

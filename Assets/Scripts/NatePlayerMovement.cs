@@ -4,18 +4,33 @@ using UnityEngine;
 
 public class NatePlayerMovement : MonoBehaviour
 {
-    private string leftControl, rightControl, jumpControl, crouchControl, shootControl;
+    // Control management, I swear it needs to be like this for reasons.
     public string[] controls = new string[5]; // Left, Right, Jump, Crouch, Shoot
+    // Variables for player movement and jump power.
     public float playerSpeed;
     public float jumpPower;
-
+    // Are we on the ground? Are we trying to be prone?
     public bool grounded = true;
+    public bool crouching = false;
+    // Public sizing things, trust me we need them for crouching.
     public Vector3 defaultSize;
     public Vector3 crouchSize;
+    private bool facingLeft = false;
+    //Jonathan's code merged here.
+    private GameManager gameManager;
+
+    public GameObject bulletPrefab;
+    public Transform bulletContainer;
+    private GameObject spawner;
+    public bool canShoot = true;
+    private float Cooldown = 0.65f;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Jonathan's code here.
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        spawner = GameObject.Find("BulletSpawner");
     }
 
     // Update is called once per frame
@@ -25,10 +40,12 @@ public class NatePlayerMovement : MonoBehaviour
         if (Input.GetKey(controls[0]))
         {
             transform.Translate(Vector2.left * Time.deltaTime * playerSpeed);
+            facingLeft = true;
         }
         else if (Input.GetKey(controls[1]))
         {
             transform.Translate(Vector2.right * Time.deltaTime * playerSpeed);
+            facingLeft = false;
         }
         //Now for jumping.
         if (Input.GetKeyDown(controls[2]) && grounded)
@@ -39,15 +56,22 @@ public class NatePlayerMovement : MonoBehaviour
         // Aaand for crouching, we need to be grounded
         if (Input.GetKeyDown(controls[3]) && grounded)
         {
-            transform.localScale = new Vector3(1, 0.6f, 1);
+            transform.localScale = crouchSize;
+            grounded = false;
+            crouching = false;
         }
-        if (!grounded || Input.GetKeyUp(controls[3]))
+        if (crouching && Input.GetKeyUp(controls[3]))
         {
-            transform.localScale = Vector3.one;
+            transform.localScale = defaultSize;
+            crouching = false;
+            grounded = true;
+        }
+        if (Input.GetKeyDown(controls[4]) && canShoot && bulletContainer.childCount < 5 && gameManager.health > 0)
+        {
+            StartCoroutine("ShootWithCooldown");
         }
 
-
-        if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Return))
         {
             Debug.Log("Randomizing controls!");
             RandomizeControls(controls);
@@ -56,7 +80,7 @@ public class NatePlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground") && !crouching)
         {
             grounded = true;
         }
@@ -78,7 +102,26 @@ public class NatePlayerMovement : MonoBehaviour
             controls[t] = controls[r];
             controls[r] = temp;
         }
+    }
 
-        
+    IEnumerator ShootWithCooldown()
+    {
+
+        // trust me we need this line
+        Quaternion rotationPos = spawner.transform.rotation;
+        if (facingLeft)
+        {
+            rotationPos *= Quaternion.Euler (0f, 180f, 0f);
+        }
+
+        // Stuff before the delay
+        Instantiate(bulletPrefab, spawner.transform.position, rotationPos, bulletContainer);
+        canShoot = false;
+
+        // The delay
+        yield return new WaitForSeconds(Cooldown);
+
+        // Stuff after the delay
+        canShoot = true;
     }
 }

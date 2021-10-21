@@ -385,8 +385,12 @@ MonoBehaviour:
   playerSpeed: 3
   jumpPower: 8
   grounded: 1
-  defaultSize: {x: 0, y: 0, z: 0}
-  crouchSize: {x: 0, y: 0, z: 0}
+  crouching: 0
+  defaultSize: {x: 1, y: 1, z: 1}
+  crouchSize: {x: 1, y: 0.6, z: 1}
+  bulletPrefab: {fileID: 7635714538661123760, guid: 13dc639fde49fab429827434537f2291, type: 3}
+  bulletContainer: {fileID: 0}
+  canShoot: 1
 --- !u!1 &1611934656
 GameObject:
   m_ObjectHideFlags: 0
