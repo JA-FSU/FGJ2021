@@ -71,11 +71,6 @@ public class NatePlayerMovement : MonoBehaviour
             StartCoroutine("ShootWithCooldown");
         }
 
-            if (Input.GetKeyDown(KeyCode.Return))
-        {
-            Debug.Log("Randomizing controls!");
-            RandomizeControls(controls);
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)

@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI healthText;
 
+    public NatePlayerMovement player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,7 @@ public class GameManager : MonoBehaviour
         UpdateScore(0);
         health = 4;
         UpdateHealth(0);
+        StartCoroutine("BeginChaos");
     }
 
     // Update is called once per frame
@@ -38,5 +41,15 @@ public class GameManager : MonoBehaviour
             health -= healthToSubtract;
         }
         healthText.text = "Health: " + health;
+    }
+
+    IEnumerator BeginChaos()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(10);
+            player.RandomizeControls(player.controls);
+        }
+        
     }
 }
