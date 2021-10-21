@@ -278,9 +278,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7635714538661123760, guid: 13dc639fde49fab429827434537f2291, type: 3}
   bulletContainer: {fileID: 6710687158159702573}
   canShoot: 1
-  jumpSound: {fileID: 0}
-  shootSound: {fileID: 0}
-  randomizeSound: {fileID: 0}
+  jumpSound: {fileID: 8300000, guid: 83659a94f7680f24d84b748e04bc27ca, type: 3}
+  shootSound: {fileID: 8300000, guid: 7a646212df06a334abea3142328f287e, type: 3}
+  randomizeSound: {fileID: 8300000, guid: e881b24f000038740982932994ce63e5, type: 3}
 --- !u!82 &3927685293880442691
 AudioSource:
   m_ObjectHideFlags: 0
