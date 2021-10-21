@@ -16,11 +16,9 @@ public class JonathanBulletMove : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector2.right * speed * Time.deltaTime);
-
-        // Destroy out of bounds
-        if (transform.position.x > 11 || transform.position.x < -11)
-        {
-            Destroy(gameObject);
-        }
+    }
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }

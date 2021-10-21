@@ -58,7 +58,7 @@ public class NatePlayerMovement : MonoBehaviour
         {
             transform.localScale = crouchSize;
             grounded = false;
-            crouching = false;
+            crouching = true;
         }
         if (crouching && Input.GetKeyUp(controls[3]))
         {
