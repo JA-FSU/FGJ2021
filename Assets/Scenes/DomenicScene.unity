@@ -690,6 +690,7 @@ GameObject:
   - component: {fileID: 445610018}
   - component: {fileID: 445610017}
   - component: {fileID: 445610019}
+  - component: {fileID: 445610020}
   m_Layer: 0
   m_Name: Goal
   m_TagString: Finish
@@ -788,6 +789,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &445610020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445610016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a42a8d59cf0a04942a95d99f12c1e30a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &488131170
 GameObject:
   m_ObjectHideFlags: 0
@@ -2252,7 +2265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8674352500049316703, guid: e00dafa4e2e0c1e46a8f0d73613fc4f0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.49756956
+      value: 0.4975696
       objectReference: {fileID: 0}
     - target: {fileID: 8674352500049316703, guid: e00dafa4e2e0c1e46a8f0d73613fc4f0, type: 3}
       propertyPath: m_LocalPosition.z
