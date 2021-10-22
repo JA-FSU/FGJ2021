@@ -20,7 +20,7 @@ public class JonathanEnemyCollision : MonoBehaviour
         
     }
 
-    void OnCollisionEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Projectile"))
         {
