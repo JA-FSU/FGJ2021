@@ -30,6 +30,7 @@ public class NatePlayerMovement : MonoBehaviour
     public AudioClip randomizeSound;
 
     private AudioSource soundFX;
+    public Vector2 RespawnPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -87,6 +88,11 @@ public class NatePlayerMovement : MonoBehaviour
         {
             grounded = true;
         }
+        else if (other.gameObject.CompareTag("Death"))
+        {
+            transform.position = RespawnPoint;
+            gameManager.UpdateHealth(1);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D other)
@@ -98,7 +104,7 @@ public class NatePlayerMovement : MonoBehaviour
     public void RandomizeControls(string[] controls) // Changes all the buttons at random.
     {
         // Knuth shuffle algorithm, many thanks to StackOverflow for suggesting it, and Wikipedia for supplying a generic codebase.
-        for (int t=0; t < controls.Length; t++)
+        for (int t = 0; t < controls.Length; t++)
         {
             string temp = controls[t];
             int r = Random.Range(t, controls.Length);
@@ -116,7 +122,7 @@ public class NatePlayerMovement : MonoBehaviour
         Quaternion rotationPos = spawner.transform.rotation;
         if (facingLeft)
         {
-            rotationPos *= Quaternion.Euler (0f, 180f, 0f);
+            rotationPos *= Quaternion.Euler(0f, 180f, 0f);
         }
 
         // Stuff before the delay

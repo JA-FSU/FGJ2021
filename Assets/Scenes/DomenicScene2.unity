@@ -134,6 +134,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8674352500049316700, guid: e00dafa4e2e0c1e46a8f0d73613fc4f0, type: 3}
+      propertyPath: RespawnPoint.x
+      value: -53
+      objectReference: {fileID: 0}
+    - target: {fileID: 8674352500049316700, guid: e00dafa4e2e0c1e46a8f0d73613fc4f0, type: 3}
+      propertyPath: RespawnPoint.y
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 8674352500049316703, guid: e00dafa4e2e0c1e46a8f0d73613fc4f0, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -281,6 +289,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5890238 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8674352500049316700, guid: e00dafa4e2e0c1e46a8f0d73613fc4f0, type: 3}
+  m_PrefabInstance: {fileID: 5890235}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 005de042dcf99b249ac0b3c76fde96c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &13792418
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,6 +852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42a8d59cf0a04942a95d99f12c1e30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WinText: {fileID: 359535249}
 --- !u!1001 &359535248
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -930,6 +950,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bce4e5d625940a4eb6832b2754f3669, type: 3}
+--- !u!1 &359535249 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 797016919059403798, guid: 1bce4e5d625940a4eb6832b2754f3669, type: 3}
+  m_PrefabInstance: {fileID: 359535248}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &359535250 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8146140239932962364, guid: 1bce4e5d625940a4eb6832b2754f3669, type: 3}
+  m_PrefabInstance: {fileID: 359535248}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &366703855
 GameObject:
   m_ObjectHideFlags: 0
@@ -3433,6 +3469,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 783852371491355645, guid: 8d8416414bb8c9047bfeb1f7cb37f544, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 5890238}
+    - target: {fileID: 783852371491355645, guid: 8d8416414bb8c9047bfeb1f7cb37f544, type: 3}
+      propertyPath: WinText
+      value: 
+      objectReference: {fileID: 359535250}
+    - target: {fileID: 783852371491355645, guid: 8d8416414bb8c9047bfeb1f7cb37f544, type: 3}
+      propertyPath: ignorer
+      value: 
+      objectReference: {fileID: 359535249}
     - target: {fileID: 783852371491355645, guid: 8d8416414bb8c9047bfeb1f7cb37f544, type: 3}
       propertyPath: scoreText
       value: 
